@@ -1,0 +1,20 @@
+{
+  "name": "rescript-module-template",
+  "version": "0.0.0",
+  "main": "lib/js/index.js",
+  "module": "lib/es6/index.mjs",
+  "license": "MIT",
+  "dependencies": {
+    "rescript": "^9.1.4"
+  },
+  "scripts": {
+    "build": "npm run clean && rescript build && npm run postbuild",
+    "clean": "rescript clean && gentype -clean",
+    "deploy": "npm run build && cd lib && npm run publish",
+    "postbuild": "node scripts/postbuild.js",
+    "start": "rescript build -w"
+  },
+  "devDependencies": {
+    "gentype": "^4.1.0"
+  }
+}

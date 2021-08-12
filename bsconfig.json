@@ -1,0 +1,28 @@
+{
+  "name": "rescript-module-template",
+  "version": "0.1.0",
+  "sources": {
+    "dir" : "src",
+    "subdirs" : true
+  },
+  "bs-dependencies": [
+  ],
+  "bs-dev-dependencies": [],
+  "package-specs": [
+    {
+      "module": "es6",
+      "suffix": ".mjs",
+      "in-source": false
+    },
+    {
+      "module": "commonjs",
+      "suffix": ".js",
+      "in-source": false
+    }
+  ],
+  "gentypeconfig": {
+    "language": "typescript",
+    "generatedFileExtension": ".d.ts"
+  },
+  "generate-merlin": true
+}
