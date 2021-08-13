@@ -1,10 +1,41 @@
 @genType
-type foo = Value1 | Value2 | Value3
+type listener<'state> = 'state => unit
 
-"helloworld"
-  ->Js.log
+@genType
+type listenerarray<'state> = array<listener<'state>>
 
-42
-  ->Belt.Int.toString
-  ->String.concat(list{"The answer is"})
-  ->Js.log
+@genType
+type state<'state> = {
+  listeners: listenerarray<'state>,
+  state: ref<'state>,
+}
+
+@genType
+let listen: (state<'state>, listener<'state>) => () => unit = (state, listener) => {
+  let index = listener->Js.Array.push(state.listeners)
+  () => {
+    let _ = Js.Array.spliceInPlace(~pos=index, ~remove=1, state.listeners)
+  }
+}
+
+@genType
+let make: ('state, ~listeners: listenerarray<'state>=?, unit) => state<'state> = (
+  state,
+  ~listeners=[],
+  (),
+) => {
+  {
+    listeners: listeners,
+    state: ref(state),
+  }
+}
+
+@genType
+let mutation: (state<'state>, ('state, 'payload) => 'state, 'payload) => unit = (
+  state,
+  mutation,
+  payload,
+) => {
+  state.state := mutation(state.state.contents, payload)
+  Js.Array.forEach(listener => listener(state.state.contents), state.listeners)
+}
