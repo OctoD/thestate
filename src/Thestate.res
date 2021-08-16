@@ -37,7 +37,10 @@ let make: ('state) => state<'state> = state => {
 let mutation: (state<'state>, ('state, 'payload) => 'state) => 'payload => unit = (
   state,
   mutation
-) => payload => {
-  state.state := mutation(state.state.contents, payload)
-  Js.Array.forEach(listener => listener(state.state.contents), state.listeners.contents)
+) => {
+  let _ = ()
+  payload => {
+    state.state := mutation(state.state.contents, payload)
+    Js.Array.forEach(listener => listener(state.state.contents), state.listeners.contents)
+  }
 }
