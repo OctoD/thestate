@@ -3,11 +3,14 @@
   "version": "0.1.0",
   "sources": {
     "dir" : "src",
-    "subdirs" : true
+    "subdirs" : true,
+    "type": "dev"
   },
   "bs-dependencies": [
   ],
-  "bs-dev-dependencies": [],
+  "bs-dev-dependencies": [
+    "rescript-test"
+  ],
   "package-specs": [
     {
       "module": "es6",
@@ -20,9 +23,5 @@
       "in-source": false
     }
   ],
-  "gentypeconfig": {
-    "language": "typescript",
-    "generatedFileExtension": ".d.ts"
-  },
   "generate-merlin": true
 }
