@@ -22,7 +22,7 @@
     "deploy": "npm run build && cd lib && npm run publish",
     "postbuild": "node scripts/postbuild.js",
     "start": "rescript build -w",
-    "test": "retest lib/es6/src/tests/*.test.mjs"
+    "test": "rescript build -with-deps && retest lib/es6/src/tests/*.test.mjs"
   },
   "devDependencies": {
     "gentype": "^4.1.0",
