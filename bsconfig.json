@@ -1,11 +1,16 @@
 {
   "name": "thestate",
   "version": "0.1.0",
-  "sources": {
-    "dir" : "src",
-    "subdirs" : true,
-    "type": "dev"
-  },
+  "sources": [
+    {
+      "dir": "src"
+    },
+    {
+      "dir": "src/tests",
+      "subdirs": true,
+      "type": "dev"
+    }
+  ],
   "bs-dependencies": [
   ],
   "bs-dev-dependencies": [
