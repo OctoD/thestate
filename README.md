@@ -90,7 +90,7 @@ let useCounter = () => {
 
 module Increment = {
   @react.component
-  let make = () => <button onClick={increment}> increment </button>
+  let make = () => <button onClick={_ => increment(1)}> {"increment"->React.string} </button>
 }
 
 module Count = {
@@ -99,7 +99,7 @@ module Count = {
     let count = useCounter()
 
     <React.Fragment>
-      {`current state is ${state}`->React.string}
+      {`current state is ${count->Belt.Int.toString}`->React.string}
     </React.Fragment>
   }
 }
