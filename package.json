@@ -9,6 +9,14 @@
     ".": {
       "import": "./lib/es6/Thestate.mjs",
       "require": "./lib/js/Thestate.js"
+    },
+    "./src": {
+      "import": "./lib/es6/Thestate.mjs",
+      "require": "./lib/js/Thestate.js"
+    },
+    "./src/Thestate.mjs": {
+      "import": "./lib/es6/Thestate.mjs",
+      "require": "./lib/js/Thestate.js"
     }
   },
   "type": "module",
