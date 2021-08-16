@@ -119,13 +119,13 @@ module Counter = {
 
 ```tsx
 import React, { useState, useEffect } from 'react';
-import * as thescript from 'thescript';
+import * as thestate from 'thestate';
 
-const store = thescript.make(100)
-const increment = thescript.mutation(store, (a: number, b: number) => a + b);
+const store = thestate.make(100)
+const increment = thestate.mutation(store, (a: number, b: number) => a + b);
 
 const useCounter = () => {
-  const [state, setstate] = useState(thescript.getstate(store))
+  const [state, setstate] = useState(thestate.getstate(store))
 
   useEffect(() => {
     thestate.listen(store, setstate)
@@ -136,7 +136,7 @@ const useCounter = () => {
 
 const Increment = () => {
   return (
-    <button onClick={increment}>
+    <button onClick={() => increment(1)}>
       increment
     </button>
   )
