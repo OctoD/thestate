@@ -1,5 +1,5 @@
-Rescript module template
-========================
+Thestate
+========
 
 Yet another global state manager.
 
@@ -20,14 +20,14 @@ Why chosing it?
 ## install
 
 ```bash
-yarn add the-state
+yarn add thestate
 ```
 
 If you are a js/ts dev, it's done. If you are using rescript (and I recommend it!), add the dependency to your *bsconfig.json* file
 
 ```json
 "bs-dependencies": [
-  "the-state"
+  "thestate"
 ]
 ```
 
@@ -41,7 +41,7 @@ You have four functions to know:
 - listen, adds a listener to all mutations in a single store
 
 ```rescript
-let store = 100->Thestate.make()
+let store = 100->Thestate.make
 let increment = store->Thestate.mutation((state, payload) => state + payload)
 let unsubscribelistener = store->Thestate.listen(state => Js.Console.log(state))
 
@@ -73,7 +73,7 @@ increment(100) // does not log anymore, we have unsubscribed before
 
 ```rescript
 // create your store normally
-let store = 100->Thestate.make()
+let store = 100->Thestate.make
 // maybe with some mutations is better
 let increment = store->Thestate.mutation((state, payload) => state + payload)
 
