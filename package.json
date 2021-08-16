@@ -38,5 +38,11 @@
   "devDependencies": {
     "gentype": "^4.1.0",
     "rescript-test": "^3.1.0"
-  }
+  },
+  "keywords": [
+    "rescript",
+    "state manager",
+    "state",
+    "react"
+  ]
 }
