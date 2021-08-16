@@ -1,5 +1,5 @@
 {
-  "name": "thestate",
+  "name": "@octod/thestate",
   "description": "A tiny state manager writter in Rescript",
   "version": "1.0.0",
   "main": "lib/js/Thestate.js",

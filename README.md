@@ -20,14 +20,14 @@ Why chosing it?
 ## install
 
 ```bash
-yarn add thestate
+yarn add @octod/thestate
 ```
 
 If you are a js/ts dev, it's done. If you are using rescript (and I recommend it!), add the dependency to your *bsconfig.json* file
 
 ```json
 "bs-dependencies": [
-  "thestate"
+  "@octod/thestate"
 ]
 ```
 
@@ -119,7 +119,7 @@ module Counter = {
 
 ```tsx
 import React, { useState, useEffect } from 'react';
-import * as thestate from 'thestate';
+import * as thestate from '@octod/thestate';
 
 const store = thestate.make(100)
 const increment = thestate.mutation(store, (a: number, b: number) => a + b);
