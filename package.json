@@ -5,6 +5,9 @@
   "main": "lib/js/Thestate.js",
   "module": "lib/es6/Thestate.mjs",
   "types": "lib/es6/Thestate.d.ts",
+  "publishConfig": {
+    "access": "public"
+  },
   "exports": {
     ".": {
       "import": "./lib/es6/Thestate.mjs",
