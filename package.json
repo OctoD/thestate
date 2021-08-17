@@ -2,26 +2,11 @@
   "name": "@octod/thestate",
   "description": "A tiny state manager writter in Rescript",
   "version": "0.2.1",
-  "main": "lib/js/Thestate.js",
-  "module": "lib/es6/Thestate.mjs",
-  "types": "lib/es6/Thestate.d.ts",
+  "types": "./src/Thestate.d.ts",
   "publishConfig": {
     "access": "public"
   },
-  "exports": {
-    ".": {
-      "import": "./lib/es6/Thestate.mjs",
-      "require": "./lib/js/Thestate.js"
-    },
-    "./src": {
-      "import": "./lib/es6/Thestate.mjs",
-      "require": "./lib/js/Thestate.js"
-    },
-    "./src/Thestate.mjs": {
-      "import": "./lib/es6/Thestate.mjs",
-      "require": "./lib/js/Thestate.js"
-    }
-  },
+  "exports": "./src/Thestate.mjs",
   "type": "module",
   "license": "MIT",
   "dependencies": {
@@ -35,7 +20,7 @@
     "deploy": "npm run build && cd lib && npm run publish",
     "postbuild": "node scripts/postbuild.js",
     "start": "rescript build -w",
-    "test": "rescript build -with-deps && retest lib/es6/src/tests/*.test.mjs"
+    "test": "rescript build -with-deps && retest src/tests/*.test.mjs"
   },
   "devDependencies": {
     "gentype": "^4.1.0",
