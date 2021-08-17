@@ -22,11 +22,6 @@
       "module": "es6",
       "suffix": ".mjs",
       "in-source": true
-    },
-    {
-      "module": "commonjs",
-      "suffix": ".js",
-      "in-source": false
     }
   ],
   "generate-merlin": true

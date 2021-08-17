@@ -6,7 +6,17 @@
   "publishConfig": {
     "access": "public"
   },
-  "exports": "./src/Thestate.mjs",
+  "exports": {
+    ".": {
+      "import": "./src/Thestate.mjs"
+    },
+    "./src": {
+      "import": "./src/*.mjs"
+    },
+    "./src/Thestate.mjs": {
+      "import": "./src/Thestate.mjs"
+    }
+  },
   "type": "module",
   "license": "MIT",
   "dependencies": {
@@ -15,10 +25,9 @@
     "rescript": "^9.1.4"
   },
   "scripts": {
-    "build": "npm run clean && rescript build -with-deps && npm run postbuild",
+    "build": "npm run clean && rescript build -with-deps",
     "clean": "rescript clean && gentype -clean",
     "deploy": "npm run build && cd lib && npm run publish",
-    "postbuild": "node scripts/postbuild.js",
     "start": "rescript build -w",
     "test": "rescript build -with-deps && retest src/tests/*.test.mjs"
   },
