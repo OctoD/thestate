@@ -21,7 +21,7 @@
     {
       "module": "es6",
       "suffix": ".mjs",
-      "in-source": false
+      "in-source": true
     },
     {
       "module": "commonjs",
