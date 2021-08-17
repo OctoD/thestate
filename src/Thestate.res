@@ -27,12 +27,11 @@ let listen: (state<'state>, listener<'state>) => () => unit = (state, listener) 
   }
 }
 
-let make: ('state) => state<'state> = state => {
+let make: ('state) => state<'state> = state =>
   {
     listeners: ref([]),
     state: ref(state),
   }
-}
 
 let mutation: (state<'state>, ('state, 'payload) => 'state) => 'payload => unit = (
   state,
@@ -43,4 +42,14 @@ let mutation: (state<'state>, ('state, 'payload) => 'state) => 'payload => unit 
     state.state := mutation(state.state.contents, payload)
     Js.Array.forEach(listener => listener(state.state.contents), state.listeners.contents)
   }
+}
+
+let useState = (store: state<'state>) => {
+  let (state, setstate) = React.useState(() => store->getstate)
+    
+  React.useEffect0(() => {
+    Some( store->listen(state => setstate(_ => state)) )
+  })
+
+  state
 }

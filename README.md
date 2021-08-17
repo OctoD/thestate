@@ -77,17 +77,6 @@ let store = 100->Thestate.make
 // maybe with some mutations is better
 let increment = store->Thestate.mutation((state, payload) => state + payload)
 
-// wrap it using a hook (recommended)
-let useCounter = () => {
-  let (state, setstate) = React.useState(() => store->Thestate.getstate)
-    
-  React.useEffect0(() => {
-    Some( store->Thestate.listen(state => setstate(_ => state)) )
-  })
-
-  state
-}
-
 module Increment = {
   @react.component
   let make = () => <button onClick={_ => increment(1)}> {"increment"->React.string} </button>
@@ -96,7 +85,7 @@ module Increment = {
 module Count = {
   @react.component 
   let make = () => {
-    let count = useCounter()
+    let count = store->Thestate.useState
 
     <React.Fragment>
       {`current state is ${count->Belt.Int.toString}`->React.string}
@@ -124,16 +113,6 @@ import * as thestate from '@octod/thestate';
 const store = thestate.make(100)
 const increment = thestate.mutation(store, (a: number, b: number) => a + b);
 
-const useCounter = () => {
-  const [state, setstate] = useState(thestate.getstate(store))
-
-  useEffect(() => {
-    thestate.listen(store, setstate)
-  }, []);
-
-  return state;
-}
-
 const Increment = () => {
   return (
     <button onClick={() => increment(1)}>
@@ -143,7 +122,7 @@ const Increment = () => {
 }
 
 const Count = () => {
-  const count = useCounter()
+  const count = thestate.useState(store)
   
   return (
     <>{`current state is ${count}`}</>
