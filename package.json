@@ -1,7 +1,7 @@
 {
   "name": "@octod/thestate",
   "description": "A tiny state manager writter in Rescript",
-  "version": "0.2.2",
+  "version": "0.2.3",
   "types": "./src/Thestate.d.ts",
   "publishConfig": {
     "access": "public"
