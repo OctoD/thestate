@@ -8,7 +8,7 @@ let samevaluestr = (~message = ?, a: string, b: string) =>
 
 test("creates a store, adds a mutation, adds a listener and mutate the store", () => {
   let store = 100->Thestate.make
-  let increment = store->Thestate.mutation((x, _) => x + 1)
+  let increment = store->Thestate.mutation((x, ()) => x + 1)
   let changes = ref(0)
   let cancel = store->Thestate.listen(_ => changes := changes.contents + 1)
 
@@ -65,7 +65,12 @@ test("creates a more complex store", () => {
   samevaluestr(~message = "name is paolo", (store->Thestate.getstate).name, "paolo")
 })
 
-type todo = {
-  done: bool,
-  description: string,
-}
+test("tests pass fn", () => {
+  let store = ""->Thestate.make
+
+  let set = store->Thestate.mutation(Thestate.pass)
+
+  "lorem"->set
+
+  samevaluestr(~message = "store value is lorem", store->Thestate.getstate, "lorem")
+})

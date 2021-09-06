@@ -44,6 +44,8 @@ let mutation: (state<'state>, ('state, 'payload) => 'state) => 'payload => unit 
   }
 }
 
+let pass = (_, s) => s
+
 let useState = (store: state<'state>) => {
   let (state, setstate) = React.useState(() => store->getstate)
     
