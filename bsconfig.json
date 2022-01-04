@@ -22,6 +22,14 @@
       "module": "es6",
       "suffix": ".mjs",
       "in-source": true
+    },
+    {
+      "module": "commonjs",
+      "suffix": ".bs.js"
+    },
+    {
+      "module": "commonjs",
+      "suffix": ".js"
     }
   ],
   "generate-merlin": true

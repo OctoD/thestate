@@ -1,23 +1,31 @@
 {
   "name": "@octod/thestate",
   "description": "A tiny state manager writter in Rescript",
-  "version": "0.3.0",
+  "version": "0.3.1",
   "types": "./src/Thestate.d.ts",
+  "main": "./lib/js/src/Thestate.bs.js",
   "publishConfig": {
     "access": "public"
   },
   "exports": {
     ".": {
-      "import": "./src/Thestate.mjs"
+      "import": "./src/Thestate.mjs",
+      "require": "./lib/js/src/Thestate.bs.js"
     },
     "./src": {
-      "import": "./src/*.mjs"
+      "import": "./src/*.mjs",
+      "require": "./lib/js/src/*.bs.js"
     },
     "./src/Thestate.mjs": {
       "import": "./src/Thestate.mjs"
+    },
+    "./lib/js/src/Thestate.bs.js": {
+      "require": "./lib/js/src/Thestate.bs.js"
+    },
+    "./lib/js/src/Thestate.js": {
+      "require": "./lib/js/src/Thestate.js"
     }
   },
-  "type": "module",
   "license": "MIT",
   "dependencies": {
     "@rescript/react": "^0.10.3",
@@ -26,14 +34,12 @@
   },
   "scripts": {
     "build": "npm run clean && rescript build -with-deps",
-    "clean": "rescript clean && gentype -clean",
-    "deploy": "npm run build && cd lib && npm run publish",
+    "clean": "rescript clean",
     "start": "rescript build -w",
     "test": "rescript build -with-deps && retest src/tests/*.test.mjs"
   },
   "devDependencies": {
-    "gentype": "^4.1.0",
-    "rescript-test": "^3.1.0"
+    "rescript-test": "^3.2.0"
   },
   "keywords": [
     "rescript",
